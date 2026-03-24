@@ -924,13 +924,11 @@ async def verify_channel_membership(update: Update, context: ContextTypes.DEFAUL
 
 
 def main():
-    # 🚨 REMINDER: Replace with your actual bot token when running in production.
-  
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+    import os
+    BOT_TOKEN = os.getenv("BOT_TOKEN")
 
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-    # Single contact handler registered (no duplicates)
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("stop", stop_command))
     app.add_handler(MessageHandler(filters.CONTACT, contact_handler))
@@ -939,6 +937,3 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
     print("Bot is running...")
     app.run_polling()
-
-if __name__ == "__main__":
-    main()
