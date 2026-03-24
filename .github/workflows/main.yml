@@ -1,0 +1,35 @@
+name: 24/7 Bot Runner
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    env:
+      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run yashbomber.py
+        run: |
+          while true
+          do
+            echo "Starting bot..."
+            python yashbomber.py
+            echo "Restarting in 5 sec..."
+            sleep 5
+          done
