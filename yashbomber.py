@@ -922,8 +922,7 @@ async def verify_channel_membership(update: Update, context: ContextTypes.DEFAUL
         )
 
 def main():
-    import os
-    BOT_TOKEN = os.getenv("BOT_TOKEN")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
