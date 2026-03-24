@@ -1,4 +1,3 @@
-
 #developed by faisbomber
 import asyncio
 import base64
@@ -922,7 +921,6 @@ async def verify_channel_membership(update: Update, context: ContextTypes.DEFAUL
             parse_mode="MarkdownV2"
         )
 
-
 def main():
     import os
     BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -937,6 +935,7 @@ def main():
 
     print("Bot is running...")
     app.run_polling()
+
 
 if __name__ == "__main__":
     main()
